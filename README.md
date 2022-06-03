@@ -1,2 +1,2 @@
 # River-Raid
-Simple port of old game
+Simple port of the old game
