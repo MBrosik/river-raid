@@ -16,12 +16,12 @@ npm run go
 ``` 
 
 
-## Used technologies
+## Technologies
 
-![image](https://user-images.githubusercontent.com/63966121/172070417-44e384c7-a058-4bb7-9d59-092e10b17d92.png)
-![image](https://user-images.githubusercontent.com/63966121/172070433-63d7ef15-e822-4b31-af2f-947318bb2ca9.png)
-![image](https://user-images.githubusercontent.com/63966121/172070394-1646c5ca-be15-4b3f-a67f-871222b7ea0c.png)
-![image](https://user-images.githubusercontent.com/63966121/172070748-26d484ff-851b-4494-8063-95fc756238f6.png)
+![Typescript](https://user-images.githubusercontent.com/63966121/172070417-44e384c7-a058-4bb7-9d59-092e10b17d92.png)
+![Webpack](https://user-images.githubusercontent.com/63966121/172070433-63d7ef15-e822-4b31-af2f-947318bb2ca9.png)
+![HTML5](https://user-images.githubusercontent.com/63966121/172070394-1646c5ca-be15-4b3f-a67f-871222b7ea0c.png)
+![CSS3](https://user-images.githubusercontent.com/63966121/172070748-26d484ff-851b-4494-8063-95fc756238f6.png)
 
 
 ## Features
