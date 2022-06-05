@@ -1,4 +1,6 @@
 # River-Raid
+
+## About 
 Simple port of the old game coded in typescript
 
 ## Interface
