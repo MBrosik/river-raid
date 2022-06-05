@@ -1,9 +1,17 @@
 # River-Raid
 Simple port of the old game coded in typescript
 
+## Interface
 ![image](https://user-images.githubusercontent.com/63966121/172069232-8a4fb916-9ec0-420b-ad8d-891592aa4376.png)
 
-Play game [there](https://mbrosik.github.io/Projects/aplikacje_klienckie/Mendela/(2021.12.07)%20River%20Raid/)
+
+## Installation
+Play the game [here](https://mbrosik.github.io/Projects/aplikacje_klienckie/Mendela/(2021.12.07)%20River%20Raid/)
+
+```
+npm i
+npm run go 
+``` 
 
 
 ## Used technologies
