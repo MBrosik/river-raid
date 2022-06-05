@@ -1,8 +1,5 @@
 import { mainInstance } from "../../../Main";
-import Image_Mesh from "../../../utils/TwoJS/Image_Mesh";
-import { mapDataInt } from "../../../utils/TwoJS/interfaces.";
 import colorRaycaster from "../../../utils/TwoJS/raycaster/colorRaycaster";
-import squarePolygonReycaster from "../../../utils/TwoJS/raycaster/squarePolygonReycaster";
 import { renderer_functions } from "../../../utils/TwoJS/Renderer";
 import { helType } from "../../constants/Levels/levelInt";
 import mapInfo from "../../constants/mapInfo";
@@ -10,6 +7,7 @@ import { allImages } from "../../loadAllImages";
 import Enemy from "../Enemy";
 import fighterHelicopterBullet from "./fighterHelicopterBullet";
 // Image_Mesh
+
 export default class Helicopter extends Enemy {
    movable: boolean;
    reverse: boolean;

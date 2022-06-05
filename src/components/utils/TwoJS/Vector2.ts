@@ -43,24 +43,21 @@ export default class Vector2 {
    add(vect2:Vector2) {
       this.x += vect2.x;
       this.y += vect2.y;
-
-      // return new Vector2(this.x, this.y,);
+      
       return this;
    }
    
    sub(vect2:Vector2) {
       this.x -= vect2.x;
       this.y -= vect2.y;
-
-      // return new Vector2(this.x, this.y,);
+      
       return this;
    }
 
    multiplyScalar(factor:number) {
       this.x *= factor;
       this.y *= factor;
-
-      // return new Vector2(this.x, this.y);
+      
       return this;
    }
 }

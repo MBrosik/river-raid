@@ -53,12 +53,8 @@ export class Main {
 
       GameConfig.moveBool = false;
       this.scoreBoard = new ScoreBoard();
-      this.scene.add(this.scoreBoard);
-      console.log("lul");
-
-
-
-      // console.log(renderer_functions);
+      this.scene.add(this.scoreBoard);      
+      
 
       await this.paintMap();
       this.startGame()
@@ -69,9 +65,7 @@ export class Main {
       renderer_functions.removeIf(el => true);
       renderer_functions_after.removeIf(el => true);
 
-      // renderer_functions.push(() => {
-      //    console.log("kurwa");
-
+      // renderer_functions.push(() => {      
       //    let levelNumber = this.scoreBoard.levelPos + 10
       //    if (levelNumber > this.levelArr.length) {
       //       this.levelArr.push(levelNumber % 2 == 0 ? level2 : level1);
@@ -144,8 +138,7 @@ export class Main {
             // ----------------
             if (other.type == "helicopter") {
                let batCopter = new Helicopter(other.reversed, other.moveable, other.helType, { x: other.position.x, y: other.position.y + boostY })
-               this.scene.add(batCopter)
-               // console.log(this.scene);
+               this.scene.add(batCopter)               
 
                this.enemies.push(batCopter)
             }
@@ -169,22 +162,19 @@ export class Main {
             }
             else if (other.type == "ship") {
                let batShip = new Ship(other.reversed, other.moveable, { x: other.position.x, y: other.position.y + boostY })
-               this.scene.add(batShip)
-               // console.log(this.scene);
+               this.scene.add(batShip)               
 
                this.enemies.push(batShip)
             }
             else if (other.type == "fighterPlane") {
                let batPlane = new FighterPlane(other.reversed, { x: other.position.x, y: other.position.y + boostY })
-               this.scene.add(batPlane)
-               // console.log(this.scene);
+               this.scene.add(batPlane)               
 
                this.enemies.push(batPlane)
             }
             else if (other.type == "ballon") {
                let batBallon = new Ballon(other.position.x, other.position.y + boostY, other.moveable, other.reversed)
-               this.scene.add(batBallon)
-               // console.log(this.scene);
+               this.scene.add(batBallon)               
 
                this.enemies.push(batBallon)
             }
@@ -200,8 +190,7 @@ export class Main {
                const { x, y } = other.position
                let batBridge = new Bridge(x, y + boostY, other.width, other.height, other.tank)
 
-               this.scene.add(batBridge)
-               // this.bridges.push(batBridge)
+               this.scene.add(batBridge)               
                this.enemies.push(batBridge)
             }
             else if (other.type == "fuel") {
@@ -262,8 +251,7 @@ export class Main {
          renderer_functions.removeIf(el => el == func);
          window.removeEventListener("keydown", keyHandler)
 
-         this.startBool = true;
-         // GameConfig.moveBool = true;
+         this.startBool = true;         
 
          this.scene.add(this.player);
 
@@ -273,6 +261,3 @@ export class Main {
       window.addEventListener("keydown", keyHandler);
    }
 }
-
-
-// ------------------------------------------------------------------------------------------------

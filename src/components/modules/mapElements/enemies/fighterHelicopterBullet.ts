@@ -4,7 +4,6 @@ import { Mesh } from "../../../utils/TwoJS/interfaces.";
 import colorRaycaster from "../../../utils/TwoJS/raycaster/colorRaycaster";
 import SquareSquareReycaster from "../../../utils/TwoJS/raycaster/squareSquareReycaster";
 import { renderer_functions } from "../../../utils/TwoJS/Renderer";
-import mapInfo from "../../constants/mapInfo";
 import LoadAllAudio from "../../LoadAllAudio";
 
 export default class fighterHelicopterBullet implements Mesh {

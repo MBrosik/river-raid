@@ -1,11 +1,6 @@
-// eslint-disable-next-line no-unused-vars
 import inRange from "../../inRange.js";
-// eslint-disable-next-line no-unused-vars
 import Image_Mesh from "../Image_Mesh.js";
-// eslint-disable-next-line no-unused-vars
 import Vector2 from "../Vector2.js";
-
-
 
 interface Intersect{
    mesh:Image_Mesh,
@@ -16,17 +11,11 @@ interface Intersect{
 
 type Intersects = Intersect[]
 
-
-
-
-
-export default class RayReycaster {
-   
+export default class RayReycaster {   
    ray_math_func: { a: number; b: number; };
 
+   
    constructor(public start_pos: Vector2, public direct_vect: Vector2) {      
-
-
       let tg = this.direct_vect.y / this.direct_vect.x;
 
       /** mathematical function object */
@@ -35,9 +24,6 @@ export default class RayReycaster {
          b: this.start_pos.y - (tg * this.start_pos.x)
       };
    }
-
-
-
 
 
    /**

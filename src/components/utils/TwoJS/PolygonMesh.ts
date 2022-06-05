@@ -3,7 +3,7 @@ import { Mesh } from "./interfaces.";
 
 export default class PolygonMesh implements Mesh {
    map_info: { x: number; y: number; z: number; };
-   // map_info: {};
+      
    constructor(
       public points: { x: number, y: number }[],
       public color: string,

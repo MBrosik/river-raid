@@ -1,8 +1,7 @@
 declare global {
    interface Array<T> {
       myRandom(): T
-      removeIf(func: (element: T, index: number, array: T[]) => Boolean): void
-      // flat<A, D=1>(this: A, depth?: D): FlatArray<A, D>[]
+      removeIf(func: (element: T, index: number, array: T[]) => Boolean): void      
    }   
 }
 

@@ -1,5 +1,3 @@
-import inRange from "../../inRange";
-
 interface squareInt {
    x: number,
    y: number,
@@ -7,8 +5,7 @@ interface squareInt {
    height: number,
 }
 
-export default function SquareSquareReycaster(square1: squareInt, square2: squareInt) {   
-   
+export default function SquareSquareReycaster(square1: squareInt, square2: squareInt) {      
    if (
       square1.x < square2.x + square2.width
       && square1.x + square1.width > square2.x

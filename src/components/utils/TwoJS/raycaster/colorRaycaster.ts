@@ -1,15 +1,13 @@
 import Camera from "../Camera";
-import Image_Mesh from "../Image_Mesh";
 import { Mesh } from "../interfaces.";
-
 
 export default class colorRaycaster {
    html_dom: HTMLCanvasElement;
    ctx: CanvasRenderingContext2D;
    empty_canvas: string;
 
-   scale = 1
-   // bPaint: Mesh[];
+   scale = 1;
+   
    constructor(
       public aPaint: (Mesh[] | Mesh)[],
       public bPaint: (Mesh[] | Mesh)[],
@@ -28,20 +26,17 @@ export default class colorRaycaster {
 
       const el = <Mesh>this.bPaint[0];
 
-      const { width:width1, height:height1, x, y } = el.map_info;
+      const { width: width1, height: height1, x, y } = el.map_info;
 
       this.html_dom.width = width1! * this.scale
       this.html_dom.height = height1! * this.scale
-      // this.ctx.save();
 
-      // console.log(this.ctx.globalCompositeOperation);
 
-      // this.ctx.globalCompositeOperation = "source-over";
       this.empty_canvas = this.html_dom.toDataURL();
    }
- 
 
-   getCollision(specificColor: number | null = null) {      
+
+   getCollision(specificColor: number | null = null) {
 
       console.time();
       this.ctx.clearRect(0, 0, this.html_dom.width, this.html_dom.height);
@@ -71,8 +66,7 @@ export default class colorRaycaster {
 
 
 
-      const imgData = this.ctx.getImageData(0, 0, width!* this.scale, height!* this.scale);
-      // console.log(imgData.data.length);
+      const imgData = this.ctx.getImageData(0, 0, width! * this.scale, height! * this.scale);      
 
       el.map_info.x *= this.scale
       el.map_info.y *= this.scale
@@ -86,26 +80,23 @@ export default class colorRaycaster {
       el.map_info.width! /= this.scale
       el.map_info.height! /= this.scale
 
-      const imgDataAfter = this.ctx.getImageData(0, 0, width!* this.scale, height!* this.scale);
-      // console.log( imgData.data.length);
+      const imgDataAfter = this.ctx.getImageData(0, 0, width! * this.scale, height! * this.scale);      
 
 
       for (let i = 0; i < imgData.data.length; i += 4) {
          let count = imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2];
          let count1 = imgDataAfter.data[i] + imgDataAfter.data[i + 1] + imgDataAfter.data[i + 2];
-
-
-         // && count != 255 * 3
+         
          if (count != 0 && count != count1) {
             console.timeEnd();
             return true;
          }
-
       }
+
       console.timeEnd();
 
       return false
-   } 
+   }
 }
 
 function colorRaycaster1(
@@ -126,7 +117,7 @@ function colorRaycaster1(
       el.action(ctx, camera)
    }
 
-   niceFor: for (const el of bPaint) {
+   for (const el of bPaint) {
 
       let { width, height, x, y } = el.map_info
 
@@ -142,9 +133,7 @@ function colorRaycaster1(
          if (count != 0 && count != count1) {
             return true;
          }
-
       }
-
    }
 
    return false

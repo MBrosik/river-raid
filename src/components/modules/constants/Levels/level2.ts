@@ -1,6 +1,3 @@
-
-// :(block|enemy)[]
-
 import mapInfo from "../mapInfo"
 import { block, other } from "./levelInt"
 
