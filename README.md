@@ -1,7 +1,7 @@
 # River-Raid
 
 ## About 
-Simple port of the old game coded in typescript
+Simple port of the old game
 
 ## Interface
 ![image](https://user-images.githubusercontent.com/63966121/172069232-8a4fb916-9ec0-420b-ad8d-891592aa4376.png)
@@ -40,3 +40,7 @@ npm run go
 - **D** - right
 - **S** - down
 - **Space bar** - action
+
+
+## Warnings
+- Game has no loading screen. You have to wait as the blue screen disappears
