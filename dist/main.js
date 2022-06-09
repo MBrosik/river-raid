@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_fonts_slkscr_slkscre_ttf__WEBPACK_IMPORTED_MODULE_3__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  padding: 0;\n  margin: 0;\n}\n\n#root {\n  width: 100%;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n@font-face {\n  font-family: \"slkscr\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}", "",{"version":3,"sources":["webpack://./src/style.scss"],"names":[],"mappings":"AAAA;EACG,UAAA;EACA,SAAA;AACH;;AAEA;EACG,WAAA;EACA,aAAA;EAEA,aAAA;EACA,uBAAA;EACA,mBAAA;AAAH;;AAGA;EACG,qBAAA;EACA,4CAAA;AAAH","sourcesContent":["body{\r\n   padding:0;\r\n   margin:0;\r\n}\r\n\r\n#root {\r\n   width: 100%;\r\n   height: 100vh;\r\n\r\n   display:flex;\r\n   justify-content:center;\r\n   align-items:center;\r\n}\r\n\r\n@font-face {\r\n   font-family: 'slkscr';\r\n   src: url('fonts/slkscr/slkscre.ttf');\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  padding: 0;\n  margin: 0;\n}\n\n#root {\n  width: 100%;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: \"slkscr\";\n}\n\n@font-face {\n  font-family: \"slkscr\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}", "",{"version":3,"sources":["webpack://./src/style.scss"],"names":[],"mappings":"AAAA;EACG,UAAA;EACA,SAAA;AACH;;AAEA;EACG,WAAA;EACA,aAAA;EAEA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,qBAAA;AAAH;;AAGA;EACG,qBAAA;EACA,4CAAA;AAAH","sourcesContent":["body{\r\n   padding:0;\r\n   margin:0;\r\n}\r\n\r\n#root {\r\n   width: 100%;\r\n   height: 100vh;\r\n\r\n   display:flex;\r\n   justify-content:center;\r\n   align-items:center;\r\n   font-family: 'slkscr';\r\n}\r\n\r\n@font-face {\r\n   font-family: 'slkscr';\r\n   src: url('fonts/slkscr/slkscre.ttf');\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1085,17 +1085,16 @@ class Main {
         // levelArr = [level1, level2, level1, level2, level1, level2,]
         this.levelArr = [_modules_constants_Levels_level1__WEBPACK_IMPORTED_MODULE_0__.default, _modules_constants_Levels_level2__WEBPACK_IMPORTED_MODULE_15__.default,];
         mainInstance = this;
-        document.getElementById("root")?.appendChild(this.renderer.html_dom);
         this.init();
     }
     async init() {
         await (0,_modules_loadAllImages__WEBPACK_IMPORTED_MODULE_6__.loadAllImages)();
+        document.getElementById("root").innerHTML = "";
+        document.getElementById("root")?.appendChild(this.renderer.html_dom);
         await _modules_LoadAllAudio__WEBPACK_IMPORTED_MODULE_17__.default.getAudios();
         _modules_GameConfig__WEBPACK_IMPORTED_MODULE_18__.default.moveBool = false;
         this.scoreBoard = new _modules_mapElements_ScoreBoard__WEBPACK_IMPORTED_MODULE_11__.ScoreBoard();
         this.scene.add(this.scoreBoard);
-        console.log("lul");
-        // console.log(renderer_functions);
         await this.paintMap();
         this.startGame();
     }
@@ -1103,8 +1102,7 @@ class Main {
         this.scene.mesh_array = [];
         _utils_TwoJS_Renderer__WEBPACK_IMPORTED_MODULE_3__.renderer_functions.removeIf(el => true);
         _utils_TwoJS_Renderer__WEBPACK_IMPORTED_MODULE_3__.renderer_functions_after.removeIf(el => true);
-        // renderer_functions.push(() => {
-        //    console.log("kurwa");
+        // renderer_functions.push(() => {      
         //    let levelNumber = this.scoreBoard.levelPos + 10
         //    if (levelNumber > this.levelArr.length) {
         //       this.levelArr.push(levelNumber % 2 == 0 ? level2 : level1);
@@ -1153,7 +1151,6 @@ class Main {
                 if (other.type == "helicopter") {
                     let batCopter = new _modules_mapElements_enemies_Helicopter__WEBPACK_IMPORTED_MODULE_7__.default(other.reversed, other.moveable, other.helType, { x: other.position.x, y: other.position.y + boostY });
                     this.scene.add(batCopter);
-                    // console.log(this.scene);
                     this.enemies.push(batCopter);
                 }
                 else if (other.type == "tank") {
@@ -1176,19 +1173,16 @@ class Main {
                 else if (other.type == "ship") {
                     let batShip = new _modules_mapElements_enemies_Ship__WEBPACK_IMPORTED_MODULE_8__.default(other.reversed, other.moveable, { x: other.position.x, y: other.position.y + boostY });
                     this.scene.add(batShip);
-                    // console.log(this.scene);
                     this.enemies.push(batShip);
                 }
                 else if (other.type == "fighterPlane") {
                     let batPlane = new _modules_mapElements_enemies_FighterPlane__WEBPACK_IMPORTED_MODULE_9__.default(other.reversed, { x: other.position.x, y: other.position.y + boostY });
                     this.scene.add(batPlane);
-                    // console.log(this.scene);
                     this.enemies.push(batPlane);
                 }
                 else if (other.type == "ballon") {
                     let batBallon = new _modules_mapElements_enemies_Ballon__WEBPACK_IMPORTED_MODULE_14__.default(other.position.x, other.position.y + boostY, other.moveable, other.reversed);
                     this.scene.add(batBallon);
-                    // console.log(this.scene);
                     this.enemies.push(batBallon);
                 }
                 else if (other.type == "wtc") {
@@ -1203,7 +1197,6 @@ class Main {
                     const { x, y } = other.position;
                     let batBridge = new _modules_mapElements_Bridge__WEBPACK_IMPORTED_MODULE_10__.default(x, y + boostY, other.width, other.height, other.tank);
                     this.scene.add(batBridge);
-                    // this.bridges.push(batBridge)
                     this.enemies.push(batBridge);
                 }
                 else if (other.type == "fuel") {
@@ -1248,14 +1241,12 @@ class Main {
             _utils_TwoJS_Renderer__WEBPACK_IMPORTED_MODULE_3__.renderer_functions.removeIf(el => el == func);
             window.removeEventListener("keydown", keyHandler);
             this.startBool = true;
-            // GameConfig.moveBool = true;
             this.scene.add(this.player);
             this.paintMap();
         };
         window.addEventListener("keydown", keyHandler);
     }
 }
-// ------------------------------------------------------------------------------------------------
 
 
 /***/ }),
@@ -1388,7 +1379,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mapInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mapInfo */ "./src/components/modules/constants/mapInfo.ts");
-// :(block|enemy)[]
 
 function getPos(x, y) {
     return { x: x * _mapInfo__WEBPACK_IMPORTED_MODULE_0__.default.width, y: y * _mapInfo__WEBPACK_IMPORTED_MODULE_0__.default.height };
@@ -1575,7 +1565,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _mapInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mapInfo */ "./src/components/modules/constants/mapInfo.ts");
-// :(block|enemy)[]
 
 function getPos(x, y) {
     return { x: x * _mapInfo__WEBPACK_IMPORTED_MODULE_0__.default.width, y: y * _mapInfo__WEBPACK_IMPORTED_MODULE_0__.default.height };
@@ -3236,7 +3225,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Camera)
 /* harmony export */ });
 class Camera {
-    // constructor (public x:number=0, public y:number=-6900){
+    // constructor (public x:number=0, public y:number=-6900){}
     constructor(x = 0, y = 0) {
         this.x = x;
         this.y = y;
@@ -3331,15 +3320,11 @@ class Renderer {
         this.ctx.webkitImageSmoothingEnabled = false;
         this.ctx.mozImageSmoothingEnabled = false;
         this.ctx.imageSmoothingEnabled = false;
-        // this.ctx.transform(1, .2, .8, .5, 0, 0);
         this.backgroundColor = "blue";
         this.stopBool = false;
-        // this.stopBool = true;
         this.render();
     }
     async render(scene = this.scene) {
-        // console.clear()
-        // console.time()
         let { width, height } = this.html_dom;
         this.ctx.clearRect(0, 0, width, height);
         this.ctx.fillStyle = this.backgroundColor;
@@ -3367,7 +3352,6 @@ class Renderer {
         }
         TIME.time_stamp = Date.now() - TIME.last_time;
         TIME.last_time = Date.now();
-        // console.timeEnd()
         if (!this.stopBool) {
             requestAnimationFrame(() => {
                 this.render();
@@ -3389,7 +3373,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Scene)
 /* harmony export */ });
-// type Mesh = Image_Mesh
 class Scene {
     constructor() {
         this.mesh_array = [];
@@ -3453,19 +3436,16 @@ class Vector2 {
     add(vect2) {
         this.x += vect2.x;
         this.y += vect2.y;
-        // return new Vector2(this.x, this.y,);
         return this;
     }
     sub(vect2) {
         this.x -= vect2.x;
         this.y -= vect2.y;
-        // return new Vector2(this.x, this.y,);
         return this;
     }
     multiplyScalar(factor) {
         this.x *= factor;
         this.y *= factor;
-        // return new Vector2(this.x, this.y);
         return this;
     }
 }
@@ -3486,7 +3466,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Camera__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Camera */ "./src/components/utils/TwoJS/Camera.ts");
 
 class colorRaycaster {
-    // bPaint: Mesh[];
     constructor(aPaint, bPaint, camera, width, height) {
         this.aPaint = aPaint;
         this.bPaint = bPaint;
@@ -3500,9 +3479,6 @@ class colorRaycaster {
         const { width: width1, height: height1, x, y } = el.map_info;
         this.html_dom.width = width1 * this.scale;
         this.html_dom.height = height1 * this.scale;
-        // this.ctx.save();
-        // console.log(this.ctx.globalCompositeOperation);
-        // this.ctx.globalCompositeOperation = "source-over";
         this.empty_canvas = this.html_dom.toDataURL();
     }
     getCollision(specificColor = null) {
@@ -3525,7 +3501,6 @@ class colorRaycaster {
             el.map_info.height /= this.scale;
         }
         const imgData = this.ctx.getImageData(0, 0, width * this.scale, height * this.scale);
-        // console.log(imgData.data.length);
         el.map_info.x *= this.scale;
         el.map_info.y *= this.scale;
         el.map_info.width *= this.scale;
@@ -3536,11 +3511,9 @@ class colorRaycaster {
         el.map_info.width /= this.scale;
         el.map_info.height /= this.scale;
         const imgDataAfter = this.ctx.getImageData(0, 0, width * this.scale, height * this.scale);
-        // console.log( imgData.data.length);
         for (let i = 0; i < imgData.data.length; i += 4) {
             let count = imgData.data[i] + imgData.data[i + 1] + imgData.data[i + 2];
             let count1 = imgDataAfter.data[i] + imgDataAfter.data[i + 1] + imgDataAfter.data[i + 2];
-            // && count != 255 * 3
             if (count != 0 && count != count1) {
                 console.timeEnd();
                 return true;
@@ -3558,7 +3531,7 @@ function colorRaycaster1(aPaint, bPaint, camera, width, height) {
     for (const el of aPaint) {
         el.action(ctx, camera);
     }
-    niceFor: for (const el of bPaint) {
+    for (const el of bPaint) {
         let { width, height, x, y } = el.map_info;
         const imgData = ctx.getImageData(x - camera.x, y - camera.y, width, height);
         el.action(ctx, camera);
@@ -3869,8 +3842,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function init() {
-    // const container:HTMLDivElement = document.getElementById('root');
-    // console.log("elo");   
     (0,_components_utils_extending__WEBPACK_IMPORTED_MODULE_2__.default)();
     new _components_Main__WEBPACK_IMPORTED_MODULE_1__.Main();
 }

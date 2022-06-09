@@ -41,13 +41,14 @@ export class Main {
 
 
    constructor() {
-      mainInstance = this;
-      document.getElementById("root")?.appendChild(this.renderer.html_dom)
+      mainInstance = this;      
 
       this.init();
    }
    async init() {
       await loadAllImages();
+      document.getElementById("root")!.innerHTML = "";
+      document.getElementById("root")?.appendChild(this.renderer.html_dom)
 
       await LoadAllAudio.getAudios();
 
