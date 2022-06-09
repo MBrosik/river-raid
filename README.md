@@ -40,7 +40,3 @@ npm run go
 - **D** - right
 - **S** - down
 - **Space bar** - action
-
-
-## Warnings
-- Game has no loading screen. You have to wait as the blue screen disappears
