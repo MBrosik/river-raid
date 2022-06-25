@@ -9,7 +9,7 @@ module.exports = {
       // sourceMapFilename: '[name].[contenthash].js'      
    },
    devtool: "source-map",
-   mode: "development", // none, development, production
+   mode: "production", // none, development, production
 
    devServer: {
       port: 9000,

@@ -1,4 +1,5 @@
 import { mainInstance } from "../../../Main";
+import normalizeFrameRate from "../../../utils/normalizeFrameRate";
 import Camera from "../../../utils/TwoJS/Camera";
 import { Mesh } from "../../../utils/TwoJS/interfaces.";
 import colorRaycaster from "../../../utils/TwoJS/raycaster/colorRaycaster";
@@ -42,7 +43,7 @@ export default class fighterHelicopterBullet implements Mesh {
 
    move() {
 
-      this.map_info.x += this.reversed ? -20 : 20;
+      this.map_info.x += (this.reversed ? -20 : 20) * normalizeFrameRate();
 
       if (this.map_info.y - mainInstance.camera.y < 0) {
          mainInstance.scene.remove(this);
@@ -56,7 +57,7 @@ export default class fighterHelicopterBullet implements Mesh {
    checkCollision() {
 
 
-      if (SquareSquareReycaster(mainInstance.player.map_info, this.map_info)) {         
+      if (SquareSquareReycaster(mainInstance.player.map_info, this.map_info)) {
          mainInstance.player.checkLives();
          mainInstance.scene.remove(this);
          renderer_functions.removeIf(el => el == this.move)

@@ -21,6 +21,7 @@ import LoadAllAudio from "./modules/LoadAllAudio";
 import GameConfig from "./modules/GameConfig";
 import BlackFloor from "./modules/mapElements/BlackFloor";
 import WTC from "./modules/mapElements/enemies/WTC";
+import normalizeFrameRate from "./utils/normalizeFrameRate";
 
 export let mainInstance: Main;
 export class Main {
@@ -37,11 +38,11 @@ export class Main {
    startBool: boolean = false;
 
    // levelArr = [level1, level2, level1, level2, level1, level2,]
-   levelArr = [level1, level2, ]
+   levelArr = [level1, level2,]
 
 
    constructor() {
-      mainInstance = this;      
+      mainInstance = this;
 
       this.init();
    }
@@ -54,8 +55,8 @@ export class Main {
 
       GameConfig.moveBool = false;
       this.scoreBoard = new ScoreBoard();
-      this.scene.add(this.scoreBoard);      
-      
+      this.scene.add(this.scoreBoard);
+
 
       await this.paintMap();
       this.startGame()
@@ -139,7 +140,7 @@ export class Main {
             // ----------------
             if (other.type == "helicopter") {
                let batCopter = new Helicopter(other.reversed, other.moveable, other.helType, { x: other.position.x, y: other.position.y + boostY })
-               this.scene.add(batCopter)               
+               this.scene.add(batCopter)
 
                this.enemies.push(batCopter)
             }
@@ -163,23 +164,23 @@ export class Main {
             }
             else if (other.type == "ship") {
                let batShip = new Ship(other.reversed, other.moveable, { x: other.position.x, y: other.position.y + boostY })
-               this.scene.add(batShip)               
+               this.scene.add(batShip)
 
                this.enemies.push(batShip)
             }
             else if (other.type == "fighterPlane") {
                let batPlane = new FighterPlane(other.reversed, { x: other.position.x, y: other.position.y + boostY })
-               this.scene.add(batPlane)               
+               this.scene.add(batPlane)
 
                this.enemies.push(batPlane)
             }
             else if (other.type == "ballon") {
                let batBallon = new Ballon(other.position.x, other.position.y + boostY, other.moveable, other.reversed)
-               this.scene.add(batBallon)               
+               this.scene.add(batBallon)
 
                this.enemies.push(batBallon)
             }
-            else if(other.type == "wtc"){
+            else if (other.type == "wtc") {
                let batWTC = new WTC(other.position.x, other.position.y + boostY, other.moveable, other.reversed)
                this.scene.add(batWTC)
                this.enemies.push(batWTC)
@@ -191,7 +192,7 @@ export class Main {
                const { x, y } = other.position
                let batBridge = new Bridge(x, y + boostY, other.width, other.height, other.tank)
 
-               this.scene.add(batBridge)               
+               this.scene.add(batBridge)
                this.enemies.push(batBridge)
             }
             else if (other.type == "fuel") {
@@ -225,7 +226,7 @@ export class Main {
 
       await new Promise(async res => {
          let func = () => {
-            this.camera.y -= 5
+            this.camera.y -= 5 * normalizeFrameRate()
 
             if (this.camera.y <= this.player.map_info.y - mapInfo.height * 0.6) {
                this.camera.y = this.player.map_info.y - mapInfo.height * 0.6;
@@ -242,7 +243,7 @@ export class Main {
       this.scene.remove(this.player);
 
       let func = () => {
-         this.camera.y -= 3
+         this.camera.y -= 3 * normalizeFrameRate()
       }
 
       renderer_functions.push(func);
@@ -252,7 +253,7 @@ export class Main {
          renderer_functions.removeIf(el => el == func);
          window.removeEventListener("keydown", keyHandler)
 
-         this.startBool = true;         
+         this.startBool = true;
 
          this.scene.add(this.player);
 

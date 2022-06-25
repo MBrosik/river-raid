@@ -1,4 +1,5 @@
 import { mainInstance } from "../../../Main";
+import normalizeFrameRate from "../../../utils/normalizeFrameRate";
 import colorRaycaster from "../../../utils/TwoJS/raycaster/colorRaycaster";
 import { renderer_functions } from "../../../utils/TwoJS/Renderer";
 import { helType } from "../../constants/Levels/levelInt";
@@ -72,14 +73,16 @@ export default class Helicopter extends Enemy {
    }
 
    move(): void {
-      let { x, y, width, height } = this.map_info
-      x += this.reverse ? -5 : 5;
+      // let { x, y, width, height } = this.map_info
+      const xMove = (this.reverse ? -5 : 5) * normalizeFrameRate();
+      this.map_info.x += xMove;
 
       if (this.colider.getCollision()) {
          this.reverse = !this.reverse
       }
+      this.map_info.x -= xMove;
 
-      this.map_info.x += this.reverse ? -5 : 5;
+      this.map_info.x += (this.reverse ? -5 : 5) * normalizeFrameRate();
       if (this.helType == "shooting") this.strike();
    }
    strike() {

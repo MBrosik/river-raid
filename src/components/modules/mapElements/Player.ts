@@ -1,10 +1,11 @@
 import { mainInstance } from "../../Main";
 import inRange from "../../utils/inRange";
+import normalizeFrameRate from "../../utils/normalizeFrameRate";
 import Image_Mesh from "../../utils/TwoJS/Image_Mesh";
 import colorRaycaster from "../../utils/TwoJS/raycaster/colorRaycaster";
 import squarePolygonReycaster from "../../utils/TwoJS/raycaster/squarePolygonReycaster";
 import SquareSquareReycaster from "../../utils/TwoJS/raycaster/squareSquareReycaster";
-import { renderer_functions, renderer_functions_after } from "../../utils/TwoJS/Renderer";
+import { renderer_functions, renderer_functions_after, TIME } from "../../utils/TwoJS/Renderer";
 import useSleep from "../../utils/useSleep";
 import mapInfo from "../constants/mapInfo";
 import GameConfig from "../GameConfig";
@@ -125,20 +126,21 @@ export default class Player extends Image_Mesh {
          }
       }
 
+      console.log(TIME.time_stamp);
 
-      this.map_info.y -= this.speed
-      mainInstance.camera.y -= this.speed
+      this.map_info.y -= this.speed * normalizeFrameRate()
+      mainInstance.camera.y -= this.speed * normalizeFrameRate()
       LoadAllAudio.audios.flyNoise.volume = this.voice
 
       // --------------------
       // left right movement
       // --------------------
       if (Keys.KeyA) {
-         this.map_info.x -= 5
+         this.map_info.x -= 5 * normalizeFrameRate()
          this.image_info.source = this.plane.left
       }
       else if (Keys.KeyD) {
-         this.map_info.x += 5
+         this.map_info.x += 5 * normalizeFrameRate()
          this.image_info.source = this.plane.right
       }
       else {

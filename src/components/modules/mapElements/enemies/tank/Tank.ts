@@ -1,3 +1,4 @@
+import normalizeFrameRate from "../../../../utils/normalizeFrameRate";
 import { tankType } from "../../../constants/Levels/levelInt";
 import { allImages } from "../../../loadAllImages";
 import Enemy from "../../Enemy";
@@ -101,8 +102,8 @@ export default class Tank extends Enemy {
       // ---------------------------
       // change position
       // ---------------------------            
-      this.map_info.x += (this.endPos.x - this.startPos.x) / this.speed;
-      this.map_info.y += (this.endPos.y - this.startPos.y) / this.speed;
+      this.map_info.x += ((this.endPos.x - this.startPos.x) / this.speed)* normalizeFrameRate();
+      this.map_info.y += ((this.endPos.y - this.startPos.y) / this.speed)* normalizeFrameRate();
       
       if (
          this.reverse ? this.map_info.x < this.endPos.x : this.map_info.x > this.endPos.x

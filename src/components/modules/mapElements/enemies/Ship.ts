@@ -1,4 +1,5 @@
 import { mainInstance } from "../../../Main";
+import normalizeFrameRate from "../../../utils/normalizeFrameRate";
 import Image_Mesh from "../../../utils/TwoJS/Image_Mesh";
 import { mapDataInt } from "../../../utils/TwoJS/interfaces.";
 import colorRaycaster from "../../../utils/TwoJS/raycaster/colorRaycaster";
@@ -14,15 +15,15 @@ export default class Ship extends Enemy {
    reverse: boolean;
    colider: colorRaycaster;
 
-   constructor(reverse: boolean, movable: boolean, { x, y }: { x: number, y: number }) {      
+   constructor(reverse: boolean, movable: boolean, { x, y }: { x: number, y: number }) {
 
       const { ship } = allImages.enemies;
-      let startPos = reverse ? ship.reversed : ship.normal      
+      let startPos = reverse ? ship.reversed : ship.normal
       let ratio = startPos.width / startPos.height;
       let width = 100
 
-      super(startPos, { dx: x, dy: y, dz: 2, dw: width, dh: width / ratio });      
-      
+      super(startPos, { dx: x, dy: y, dz: 2, dw: width, dh: width / ratio });
+
 
       // -----------------------------
       // push to this
@@ -35,20 +36,19 @@ export default class Ship extends Enemy {
    move(): void {
       const { ship } = allImages.enemies;
       
+      const xMove = (this.reverse ? -5 : 5) * normalizeFrameRate();
+      this.map_info.x += xMove;
 
-      let { x, y, width, height } = this.map_info
-
-      x += this.reverse ? -5 : 5;
-            
       if (this.getCollision()) {
          this.reverse = !this.reverse
 
          this.image_info.source = this.reverse ? ship.reversed : ship.normal
       }
+      this.map_info.x -= xMove;
 
-      this.map_info.x += this.reverse ? -5 : 5;
+      this.map_info.x += (this.reverse ? -5 : 5) * normalizeFrameRate();
    }
-   getCollision(){
+   getCollision() {
       const { ship } = allImages.enemies;
       let col1 = this.colider.getCollision();
       this.image_info.source = this.image_info.source == ship.normal ? ship.reversed : ship.normal

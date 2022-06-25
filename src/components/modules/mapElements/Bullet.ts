@@ -1,4 +1,5 @@
 import { mainInstance } from "../../Main";
+import normalizeFrameRate from "../../utils/normalizeFrameRate";
 import Camera from "../../utils/TwoJS/Camera";
 import Image_Mesh from "../../utils/TwoJS/Image_Mesh";
 import { Mesh } from "../../utils/TwoJS/interfaces.";
@@ -38,22 +39,22 @@ export default class Bullet implements Mesh {
       ctx.fill();
    }
 
-   move() {      
+   move() {
 
-      this.map_info.x = mainInstance.player.map_info.x + mainInstance.player.map_info.width/2 - this.map_info.width/2
-      this.map_info.y -= 20;
+      this.map_info.x = mainInstance.player.map_info.x + mainInstance.player.map_info.width / 2 - this.map_info.width / 2
+      this.map_info.y -= 20 * normalizeFrameRate();
       if (this.map_info.y - mainInstance.camera.y < 0) {
          mainInstance.scene.remove(this);
          renderer_functions.removeIf(el => el == this.move)
       }
       else {
          this.checkCollision();
-      }           
+      }
    }
 
    checkCollision() {
       for (const enemy of [...mainInstance.enemies, ...mainInstance.fuels]) {
-         
+
          if (SquareSquareReycaster(enemy.map_info, this.map_info)) {
             enemy.destroy();
             mainInstance.scene.remove(this);
@@ -64,7 +65,7 @@ export default class Bullet implements Mesh {
 
       if (this.colider.getCollision()) {
          mainInstance.scene.remove(this);
-         renderer_functions.removeIf(el => el == this.move)         
-      }      
+         renderer_functions.removeIf(el => el == this.move)
+      }
    }
 }
