@@ -11,6 +11,9 @@ Simple port of the old game
 Play the game [here](https://mbrosik.github.io/Projects/aplikacje_klienckie/Mendela/(2021.12.07)%20River%20Raid/)
 
 ```
+git init
+git remote add origin https://github.com/MBrosik/river-raid.git
+git pull origin main
 npm i
 npm run go 
 ``` 
